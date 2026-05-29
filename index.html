@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetMirror AllMovies – Premium Streaming Apps & TV Directory</title>
+    <!-- Include FontAwesome for professional Movie, TV, and Football icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-black: #060609;
+            --bg-card: #0d0d16;
+            --net-red: #e50914;
+            --net-red-hover: #b20710;
+            --neon-glow: #ff003c;
+            --text-white: #ffffff;
+            --text-muted: #8e8e93;
+            --border-muted: #1c1c28;
+            --whatsapp-green: #25d366;
+            --paypal-blue: #00457c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            line-height: 1.5;
+        }
+
+        /* PREMIUM GLASS NAVIGATION HEADER */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 5%;
+            background-color: rgba(6, 6, 9, 0.85);
+            border-bottom: 1px solid var(--border-muted);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-white);
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--neon-glow);
+        }
+        .logo span { color: var(--net-red); text-shadow: none; }
+        .logo i { margin-right: 8px; color: var(--net-red); }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text-white); }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* GOOGLE ADSENSE SPACE */
+        .ad-container-wrapper {
+            margin: 25px 0 35px 0;
+            text-align: center;
+        }
+        .ad-marker { font-size: 9px; color: #323240; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .ad-box-layout { background-color: var(--bg-card); border: 1px dashed #1f1f2e; padding: 20px; min-height: 90px; display: flex; align-items: center; justify-content: center; color: #323240; font-size: 11px; border-radius: 6px; }
+
+        /* NATIVE AMOSHII SMM BANNER */
+        .smm-premium-card {
+            background: linear-gradient(135deg, #24000a 0%, var(--bg-card) 60%, #050508 100%);
+            border: 2px solid var(--neon-glow);
+            border-radius: 14px;
+            padding: 30px;
+            margin-bottom: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.2);
+        }
+
+        @media (max-width: 850px) {
+            .smm-premium-card { flex-direction: column; text-align: center; padding: 25px; }
+        }
+
+        .smm-details h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .smm-details h2 span { color: var(--neon-glow); text-shadow: 0 0 10px rgba(255,0,60,0.3); }
+        .smm-details p { color: #cbd5e1; font-size: 0.98rem; max-width: 680px; line-height: 1.4; }
+
+        .smm-cta-trigger {
+            background: linear-gradient(135deg, var(--neon-glow) 0%, #a30026 100%);
+            color: white;
+            padding: 15px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(255, 0, 60, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .smm-cta-trigger:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(255, 0, 60, 0.6); }
+
+        /* APPLICATION CONTAINERS */
+        .app-showcase-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-muted);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-title-bar {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .app-title-bar i { color: var(--net-red); }
+        .app-title-bar i.fa-soccer-ball { color: #25d366; }
+
+        .app-summary {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            max-width: 800px;
+        }
+
+        /* GRID ACTIONS BUTTON CONNECTOR */
+        .action-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            color: var(--text-white);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .action-btn i { font-size: 16px; }
+        .action-btn:active { transform: scale(0.98); }
+
+        .btn-crimson { background-color: var(--net-red); }
+        .btn-crimson:hover { background-color: var(--net-red-hover); }
+        
+        .btn-secondary-dark { background-color: #171722; border: 1px solid #2d2d3d; }
+        .btn-secondary-dark:hover { background-color: #222230; }
+
+        .btn-outline-glow { background-color: transparent; border: 1px solid #3b3b54; color: #a2a2c2; }
+        .btn-outline-glow:hover { border-color: var(--neon-glow); color: white; background-color: rgba(255,0,60,0.05); }
+
+        /* CONTACT, DONATION, SOCIAL MEDIA FOOTER TILES */
+        .footer-utility-hub {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-utility-hub { grid-template-columns: 1fr; }
+        }
+
+        .utility-panel {
+            background-color: #09090e;
+            border: 1px solid var(--border-muted);
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .utility-panel h3 { font-size: 1.2rem; margin-bottom: 15px; border-left: 3px solid var(--neon-glow); padding-left: 10px; }
+        
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-link-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: #cbd5e1;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        .contact-link-item:hover { color: white; background-color: #13131c; }
+        .contact-link-item i { font-size: 18px; width: 20px; text-align: center; }
+
+        .fa-whatsapp { color: var(--whatsapp-green); }
+        .fa-instagram { color: #fccc63; }
+        .fa-facebook { color: #1877f2; }
+
+        .whatsapp-tag { background-color: var(--whatsapp-green); color: black; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 800; margin-right: 5px; }
+        
+        .coffee-donation-box {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            background: linear-gradient(180deg, #09090e 0%, #030305 100%);
+        }
+        .coffee-donation-box i.fa-coffee { font-size: 2.2rem; color: #ffdd00; margin-bottom: 10px; }
+
+        .paypal-btn {
+            background-color: #0070ba;
+            color: white;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0, 112, 186, 0.3);
+            transition: background 0.2s;
+        }
+        .paypal-btn:hover { background-color: #005ea6; }
+
+        footer { text-align: center; color: #2e2e3d; font-size: 11px; margin-top: 50px; padding: 20px 0; border-top: 1px solid var(--border-muted); }
+    </style>
+</head>
+<body>
+
+    <!-- STICKY SITE HEADER WITH PRO-LOOKING CINEMA ICON -->
+    <nav class="navbar">
+        <a href="#" class="logo"><i class="fa-solid fa-film"></i>Net<span>Mirror</span> AllMovies</a>
+        <div class="nav-links">
+            <a href="#netmirror-suite">NetMirror</a>
+            <a href="#onstream-suite">OnStream</a>
+            <a href="#cricfy-suite">Cricfy TV</a>
+            <a href="#support-hub">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- AMOSHII SMM PANEL PROMO LINK -->
+        <section class="smm-premium-card">
+            <div class="smm-details">
+                <h2>Stuck on 0 Views? <span>Explode Your Social Media Accounts Instantly!</span></h2>
+                <p>Stop fighting the algorithm blindly. Build dominant authority with instantaneous premium followers, viral video watch-time, and targeted real engagement pipelines built specifically for TikTok, Instagram, and YouTube. Launch your trajectory through the official AMOSHII SMM dashboard now!</p>
+            </div>
+            <a href="https://shark7425.github.io/amoshii-smm/" class="smm-cta-trigger" target="_blank">
+                <i class="fa-solid fa-rocket" style="margin-right: 8px;"></i>Boost My Traffic Instantly
+            </a>
+        </section>
+
+        <!-- GOOGLE ADSENSE AREA BLOCK 1 -->
+        <div class="ad-container-wrapper">
+            <div class="ad-marker">Advertisement</div>
+            <div class="ad-box-layout">[Google AdSense Account Layout Banner - Top Block]</div>
+        </div>
+
+
+        <!-- SUITE 1: NETMIRROR ENGINE SUITE -->
+        <section id="netmirror-suite" class="app-showcase-box">
+            <div class="app-title-bar"><i class="fa-solid fa-clapperboard"></i> NetMirror Engine Suite</div>
+            <p class="app-summary">Access the ultimate configuration. Pick your preferred interface below: source our complete Android native package compilation directory, install the dedicated Android TV home theatre package layout, or bypass downloads entirely to stream directly from the remote cloud interface mirror framework.</p>
+            
+            <div class="action-links-grid">
+                <a href="https://www.mediafire.com/folder/0g3i68dzh65ud/NETMIRROR+ANDROID" class="action-btn btn-crimson" target="_blank">
+                    <i class="fa-solid fa-mobile-screen-button"></i> NetMirror Android Mobile Folder
+                </a>
+                <a href="https://www.mediafire.com/folder/r11d8c5olb9y6/NETMIRROR+TV" class="action-btn btn-secondary-dark" target="_blank">
+                    <i class="fa-solid fa-tv"></i> NetMirror Android TV Folder
+                </a>
+                <a href="https://net27.cc/" class="action-btn btn-outline-glow" target="_blank">
+                    <i class="fa-solid fa-globe"></i> Stream Online (No App Required)
+                </a>
+            </div>
+        </section>
+
+
+        <!-- SUITE 2: ONSTREAM DIRECT VAULT -->
+        <section id="onstream-suite" class="app-showcase-box">
+            <div class="app-title-bar"><i class="fa-solid fa-popcorn"></i><i class="fa-solid fa-video" style="color: #ffc107; margin-right: 4px;"></i> OnStream Movie Mirror</div>
+            <p class="app-summary">An excellent, ultra-fast secondary environment designed for high-bitrate file distribution. Access the full version array folders to configure seamless entertainment libraries directly across mobile frameworks and remote wide-screen console units.</p>
+            
+            <div class="action-links-grid">
+                <a href="https://www.mediafire.com/folder/aml6u5rmyzf2j/ONSTREAM+ANDROID" class="action-btn btn-secondary-dark" style="border-left: 3px solid #ffc107;" target="_blank">
+                    <i class="fa-solid fa-android" style="color: #ffc107;"></i> OnStream Mobile Archive
+                </a>
+                <a href="https://www.mediafire.com/folder/71hz6a44qzfew/ONSTREAM+TV" class="action-btn btn-secondary-dark" style="border-left: 3px solid #007bff;" target="_blank">
+                    <i class="fa-solid fa-display" style="color: #007bff;"></i> OnStream TV Monitor Archive
+                </a>
+            </div>
+        </section>
+
+
+        <!-- SUITE 3: CRICFY LIVE DIRECTORY VIA ANDROID ARCHITECTURES (REAL FOOTBALL ICON) -->
+        <section id="cricfy-suite" class="app-showcase-box">
+            <div class="app-title-bar"><i class="fa-solid fa-soccer-ball animate-spin"></i> Cricfy TV Sports Directory</div>
+            <p class="app-summary">Live sports networks, satellite television feeds, and streaming schedules. Because mobile security layers vary across operating frameworks, explore the dedicated package portal folder to source accurate deployment builds tailored to your matching version array.</p>
+            
+            <div class="action-links-grid" style="grid-template-columns: 1fr;">
+                <a href="https://www.mediafire.com/folder/scvu9nokveq2k/CRICFY+TV+MOBILE" class="action-btn btn-outline-glow" style="border-color: #25d366;" target="_blank">
+                    <i class="fa-solid fa-trophy" style="color: #ffdd00;"></i> Open Cricfy TV Multi-Version Package Folder
+                </a>
+            </div>
+        </section>
+
+
+        <!-- GOOGLE ADSENSE AREA BLOCK 2 -->
+        <div class="ad-container-wrapper">
+            <div class="ad-marker">Advertisement</div>
+            <div class="ad-box-layout">[Google AdSense Account Layout Banner - Bottom Block]</div>
+        </div>
+
+
+        <!-- UTILITY MATRIX: SUPPORT DESK, CONTACT LINKS & PAYPAL DONATIONS -->
+        <section id="support-hub" class="footer-utility-hub">
+            
+            <!-- CONTACT MATRIX -->
+            <div class="utility-panel">
+                <h3>Contact Admin Support & Networks</h3>
+                <div class="contact-list">
+                    <a href="https://wa.me/254707854338" class="contact-link-item" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> 
+                        <div><span class="whatsapp-tag">WhatsApp 1</span> 0707 854 338 — Instant Query Desk</div>
+                    </a>
+                    <a href="https://wa.me/254781237875" class="contact-link-item" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> 
+                        <div><span class="whatsapp-tag">WhatsApp 2</span> 0781 237 875 — Backup Network Line</div>
+                    </a>
+                    <a href="https://www.instagram.com/kanairo_geins_254/" class="contact-link-item" target="_blank">
+                        <i class="fa-brands fa-instagram"></i> 
+                        <div>Instagram Main: <span style="color: #ff007f;">@kanairo_geins_254</span></div>
+                    </a>
+                    <a href="https://www.instagram.com/komothai.oxford/" class="contact-link-item" target="_blank">
+                        <i class="fa-brands fa-instagram"></i> 
+                        <div>Instagram Backup: <span style="color: #ff007f;">@komothai.oxford</span></div>
+                    </a>
+                    <a href="https://www.facebook.com/search/top/?q=Amo%20Shii" class="contact-link-item" target="_blank">
+                        <i class="fa-brands fa-facebook"></i> 
+                        <div>Facebook Profile: <span style="color: #1877f2;">@Amo Shii</span></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- BUY ME A COFFEE (PAYPAL PROFILE) -->
+            <div class="utility-panel coffee-donation-box">
+                <i class="fa-solid fa-coffee"></i>
+                <h4 style="margin: 5px 0 2px 0; font-size: 15px;">Support Our Project</h4>
+                <p style="font-size: 11px; color: var(--text-muted); line-height: 1.3;">Help us keep the server infrastructure mirrors alive and up to date.</p>
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=princeamonje@gmail.com&currency_code=USD" class="paypal-btn" target="_blank">
+                    <i class="fa-brands fa-paypal"></i> Buy Me A Coffee via PayPal
+                </a>
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer>
+        <p>NetMirror AllMovies operates exclusively as an index point of third-party digital repositories. We host no copyrighted video media files on our server modules.</p>
+        <p>&copy; 2026 NetMirror AllMovies Portal. Managed under the Amo Shii Technical Network.</p>
+    </footer>
+
+</body>
+</html>
